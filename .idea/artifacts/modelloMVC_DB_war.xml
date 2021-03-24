@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="modelloMVC_DB:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>modelloMVC_DB</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="modelloMVC_DB-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="modelloMVC_DB:war exploded" />
+    </root>
+  </artifact>
+</component>
