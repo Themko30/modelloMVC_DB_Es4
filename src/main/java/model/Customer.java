@@ -1,38 +1,48 @@
 package model;
 
+
 public class Customer {
-    private final String id, firstName, lastName;
-    private final double balance;
+  private String firstName;
+  private String lastName;
+  private int id;
+  private double balance, balanceNoSign;
 
-    public Customer(String id,
-                    String firstName,
-                    String lastName,
-                    double balance) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.balance = balance;
-    }
+  
+  public int getId() {
+    return id;
+  }
 
-    public String getId() {
-        return id;
-    }
+  public String getFirstName() {
+    return(firstName);
+  }
 
-    public String getFirstName() {
-        return (firstName);
-    }
+  public String getLastName() {
+    return(lastName);
+  }
 
-    public String getLastName() {
-        return (lastName);
-    }
+  public double getBalance() {
+    return(balance);
+  }
 
-    public double getBalance() {
-        return (balance);
-    }
+  public double getBalanceNoSign() {
+    return((balance<0)?-balance:balance);
+  }
 
-    public String getBalanceNoSign() {
-        String balanceString =
-                String.format("%,.2f", Math.abs(balance));
-        return (balanceString);
-    }
+
+  public void setId(int id) {
+    this.id = id;
+  }
+
+  public void setBalance(double balance) {
+    this.balance = balance;
+  }
+
+  public void setLastName(String lastName) {
+    this.lastName = lastName;
+  }
+
+  public void setFirstName(String firstName) {
+    this.firstName = firstName;
+  }
 }
+  
