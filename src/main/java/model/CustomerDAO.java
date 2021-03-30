@@ -82,13 +82,13 @@ public class CustomerDAO {
     try (Connection con = ConPool.getConnection()) {
       Statement st = con.createStatement();
       String query =
-          "update Customer set firstName='"
+          "UPDATE Customer SET firstName='"
               + c.getFirstName()
               + "', lastName='"
               + c.getLastName()
               + "', balance="
               + c.getBalance()
-              + " where id="
+              + " WHERE id="
               + c.getId()
               + ";";
       st.executeUpdate(query);
