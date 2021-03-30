@@ -15,7 +15,7 @@
     <!-- the View uses the "badId" data sent by the Controller -->
 
     <h2>No customer found with id "${badId}"</h2>
-    <p>Please <a href="index.html">try again</a>.</p>
+    <p>Please <a href="../../index.html">try again</a>.</p>
 </div>
 </body>
 </html>

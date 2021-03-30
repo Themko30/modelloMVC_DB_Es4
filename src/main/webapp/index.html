@@ -1,25 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><title>MVC Examples</title>
-<link rel="stylesheet"
-      href="./css/styles.css"
-      type="text/css"/>
+<head>
+  <meta charset="UTF-8">
+  <title>
+    MVC DB
+  </title>
+  <link rel="stylesheet"
+        href="css/styles.css"
+        type="text/css">
 </head>
 <body>
 <table class="title">
-  <tr><th>MVC Examples</th></tr>
+  <tr>
+    <th> MVC DB</th>
+  </tr>
 </table>
-<br/>
+<br>
 <fieldset>
-  <legend>Bank Account Balance</legend>
+  <legend>
+    Bank Customers
+  </legend>
 
-  <!-- the html page invokes the "show-balance" servlet, i.e., the ShowBalance class -->
-
-  <form action="show-balance">
-    Customer ID (id001, id002, id003): 
-    <input type="text" name="customerId"/><br/>
-    <input type="submit" value="Show Balance"/>
+  <form action="searchByID.html">
+    Go to search form:
+    <input type="submit" value="Go"/>
   </form>
-</fieldset>
 
-</body></html>
+  <form action="ShowAll">
+    Go to show all:
+    <input type="submit" value="Go"/>
+  </form>
+
+</fieldset>
+</body>
+</html>

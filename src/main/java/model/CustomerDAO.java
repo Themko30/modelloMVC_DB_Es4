@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 /** A small table of banking customers for testing. */
 public class CustomerDAO {
@@ -52,6 +53,45 @@ public class CustomerDAO {
       int id = rs.getInt(1);
       customer.setId(id);
 
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public ArrayList<Customer> doRetrieveAll() {
+    try (Connection con = ConPool.getConnection()) {
+      PreparedStatement ps =
+          con.prepareStatement("SELECT id, firstName, lastName, balance FROM customer");
+      ResultSet rs = ps.executeQuery();
+      ArrayList<Customer> customers = new ArrayList<Customer>();
+      if (rs.next()) {
+        Customer p = new Customer();
+        p.setId(rs.getInt(1));
+        p.setFirstName(rs.getString(2));
+        p.setLastName(rs.getString(3));
+        p.setBalance(rs.getDouble(4));
+        customers.add(p);
+      }
+      return customers;
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public void doUpdateCustomer(Customer c) {
+    try (Connection con = ConPool.getConnection()) {
+      Statement st = con.createStatement();
+      String query =
+          "update Customer set firstName='"
+              + c.getFirstName()
+              + "', lastName='"
+              + c.getLastName()
+              + "', balance="
+              + c.getBalance()
+              + " where id="
+              + c.getId()
+              + ";";
+      st.executeUpdate(query);
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }

@@ -1,3 +1,4 @@
+<jsp:useBean id="customer" scope="request" type="model.Customer"/>
 <!DOCTYPE html>
 <html>
 <head><title>Your Balance</title>
