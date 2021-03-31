@@ -1,5 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <jsp:useBean id="customers" scope="request" type="java.util.List"/>
 <html>
@@ -16,10 +15,13 @@
 
 <ol>
     <c:forEach items="${customers}" var="customer">
-    <li>${customer.firstName} ${customer.lastName} ${customer.balance}
-
-
-        </c:forEach>
+        <li>${customer.firstName} ${customer.lastName} ${customer.balance}
+            <form action="UpdateCustomer">
+                <input type="hidden" name="id" value="${customer.id}">
+                <input type="submit" value="Modifica">
+            </form>
+        </li>
+    </c:forEach>
 </ol>
 </body>
 </html>

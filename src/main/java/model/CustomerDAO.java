@@ -31,7 +31,7 @@ public class CustomerDAO {
     }
   }
 
-  // la funzione seguente è inutile perchè il DB è riempito tramite tool esterno
+  // la funzione seguente è inutile perché il DB è riempito tramite tool esterno
   // sarebbe utile se l'applicazione fornisse un form per riempirlo. IDEA! aggiungi questa feature
   // all'applicazione
   // è un buon modo per verificare la sua correttezza
@@ -64,7 +64,7 @@ public class CustomerDAO {
           con.prepareStatement("SELECT id, firstName, lastName, balance FROM customer");
       ResultSet rs = ps.executeQuery();
       ArrayList<Customer> customers = new ArrayList<Customer>();
-      if (rs.next()) {
+      while (rs.next()) {
         Customer p = new Customer();
         p.setId(rs.getInt(1));
         p.setFirstName(rs.getString(2));
@@ -78,7 +78,7 @@ public class CustomerDAO {
     }
   }
 
-  public void doUpdateCustomer(Customer c) {
+  public void doUpdate(Customer c) {
     try (Connection con = ConPool.getConnection()) {
       Statement st = con.createStatement();
       String query =

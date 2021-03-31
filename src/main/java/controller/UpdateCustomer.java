@@ -1,6 +1,7 @@
 package controller;
 
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +21,8 @@ public class UpdateCustomer extends HttpServlet {
     CustomerDAO dao = new CustomerDAO();
     customer = dao.doRetrieveById(id);
     request.setAttribute("customer", customer);
+    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/update.jsp");
+    dispatcher.forward(request, response);
   }
 
   @Override
