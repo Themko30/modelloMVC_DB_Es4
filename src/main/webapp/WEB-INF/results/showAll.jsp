@@ -10,15 +10,26 @@
 </head>
 <body>
 <h1>
-    All Customers
+    Manage Customers
 </h1>
+
+<h2 style="color: green">
+    Green names are bookmarked
+</h2>
 
 <ol>
     <c:forEach items="${customers}" var="customer">
         <li>${customer.firstName} ${customer.lastName} ${customer.balance}
             <form action="UpdateCustomer">
+                <input type="hidden" name="action" value="1">
                 <input type="hidden" name="id" value="${customer.id}">
                 <input type="submit" value="Modifica">
+            </form>
+
+            <form action="UpdateCustomer">
+                <input type="hidden" name="action" value="2">
+                <input type="hidden" name="id" value="${customer.id}">
+                <input type="submit" value="Add to bookmarked">
             </form>
         </li>
     </c:forEach>

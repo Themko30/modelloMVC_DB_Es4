@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Customer;
 import model.CustomerDAO;
 
@@ -19,7 +20,12 @@ public class ShowAll extends HttpServlet {
       throws ServletException, IOException {
     CustomerDAO service = new CustomerDAO();
     ArrayList<Customer> customers = service.doRetrieveAll();
+    HttpSession ssn = request.getSession(true);
+    if (ssn.getAttribute("pref") == null) {
+      ssn.setAttribute("pref", new ArrayList<Customer>());
+    } else {
 
+    }
     request.setAttribute("customers", customers);
     String address;
 

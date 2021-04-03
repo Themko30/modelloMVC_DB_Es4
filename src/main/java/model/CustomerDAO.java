@@ -7,10 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-/** A small table of banking customers for testing. */
 public class CustomerDAO {
 
-  /** Finds the customer with the given ID. Returns null if there is no match. */
   public Customer doRetrieveById(int id) {
     try (Connection con = ConPool.getConnection()) {
       PreparedStatement ps =
@@ -30,11 +28,6 @@ public class CustomerDAO {
       throw new RuntimeException(e);
     }
   }
-
-  // la funzione seguente è inutile perché il DB è riempito tramite tool esterno
-  // sarebbe utile se l'applicazione fornisse un form per riempirlo. IDEA! aggiungi questa feature
-  // all'applicazione
-  // è un buon modo per verificare la sua correttezza
 
   public void doSave(Customer customer) {
     try (Connection con = ConPool.getConnection()) {
@@ -92,6 +85,27 @@ public class CustomerDAO {
               + c.getId()
               + ";";
       st.executeUpdate(query);
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  public ArrayList<Customer> doRetrievePrefs() {
+    try (Connection con = ConPool.getConnection()) {
+      PreparedStatement ps =
+          con.prepareStatement(
+              "SELECT id, firstName, lastName, balance FROM customer WHERE bookmarked=true ");
+      ResultSet rs = ps.executeQuery();
+      ArrayList<Customer> customers = new ArrayList<Customer>();
+      while (rs.next()) {
+        Customer p = new Customer();
+        p.setId(rs.getInt(1));
+        p.setFirstName(rs.getString(2));
+        p.setLastName(rs.getString(3));
+        p.setBalance(rs.getDouble(4));
+        customers.add(p);
+      }
+      return customers;
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }

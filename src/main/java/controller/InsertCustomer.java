@@ -10,25 +10,21 @@ import javax.servlet.http.HttpServletResponse;
 import model.Customer;
 import model.CustomerDAO;
 
-@WebServlet(name = "UpdateCustomer", value = "/UpdateCustomer")
-public class UpdateCustomer extends HttpServlet {
+@WebServlet(name = "InsertCustomer", value = "/InsertCustomer")
+public class InsertCustomer extends HttpServlet {
 
   @Override
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
-    int action = Integer.parseInt(request.getParameter("action"));
-
-    if (action == 1) {
-      Customer customer;
-      int id = Integer.parseInt(request.getParameter("id"));
-      CustomerDAO dao = new CustomerDAO();
-      customer = dao.doRetrieveById(id);
-      request.setAttribute("customer", customer);
-      RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/update.jsp");
-      dispatcher.forward(request, response);
-    }
-
-    if (action == 2) {}
+    Customer c = new Customer();
+    c.setFirstName(request.getParameter("name"));
+    c.setLastName(request.getParameter("surname"));
+    c.setBalance(Double.parseDouble(request.getParameter("balance")));
+    CustomerDAO dao = new CustomerDAO();
+    dao.doSave(c);
+    request.setAttribute("customer", c);
+    RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/results/insert_done.jsp");
+    dispatcher.forward(request, response);
   }
 
   @Override

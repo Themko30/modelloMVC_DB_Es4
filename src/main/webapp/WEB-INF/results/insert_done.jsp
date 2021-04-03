@@ -1,4 +1,5 @@
 <jsp:useBean id="customer" scope="request" type="model.Customer"/>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -9,7 +10,7 @@
 </head>
 <body>
 <h1>
-    Update done...
+    Insert done...
 </h1>
 
 <p>
@@ -19,7 +20,7 @@
     Balance: ${customer.balance}<br>
 </p>
 <p>
-    Go to <a href="/main/webapp/index.html">homepage</a>.
+    Go to <a href="index.html">homepage</a>.
 </p>
 </body>
 </html>

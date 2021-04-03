@@ -4497,7 +4497,13 @@ SELECT|sys.sys_config
       <Position>4</Position>
       <DataType>double|0s</DataType>
     </column>
-    <key id="1098" parent="363" name="PRIMARY">
+    <column id="1098" parent="363" name="bookmarked">
+      <Position>5</Position>
+      <DataType>tinyint(1)|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>0</DefaultExpression>
+    </column>
+    <key id="1099" parent="363" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
